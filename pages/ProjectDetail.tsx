@@ -10,6 +10,11 @@ const ProjectDetail: React.FC = () => {
   const project = PROJECTS.find(p => p.id === id);
   const [activeTab, setActiveTab] = useState<'planta1' | 'planta2'>('planta1');
 
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert('Sua solicitação foi enviada! Em breve entraremos em contato.');
+  };
+
   if (!project) {
     return <div className="pt-40 text-center">Projeto não encontrado. <Link to="/empreendimentos" className="text-secondary">Voltar</Link></div>;
   }
@@ -158,14 +163,14 @@ const ProjectDetail: React.FC = () => {
                 <h3 className="text-2xl font-sans font-bold mb-2">Interessado?</h3>
                 <p className="text-gray-400 text-sm mb-6">Preencha o formulário abaixo e um de nossos consultores entrará em contato.</p>
                 
-                <form className="space-y-4">
+                <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-gray-400 mb-1">Nome</label>
-                    <input type="text" className="w-full bg-white/10 border border-white/20 p-3 text-white focus:border-secondary outline-none transition-colors" />
+                    <input type="text" required className="w-full bg-white/10 border border-white/20 p-3 text-white focus:border-secondary outline-none transition-colors" />
                   </div>
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-gray-400 mb-1">E-mail</label>
-                    <input type="email" className="w-full bg-white/10 border border-white/20 p-3 text-white focus:border-secondary outline-none transition-colors" />
+                    <input type="email" required className="w-full bg-white/10 border border-white/20 p-3 text-white focus:border-secondary outline-none transition-colors" />
                   </div>
                   <div>
                     <label className="block text-xs uppercase tracking-widest text-gray-400 mb-1">Telefone</label>

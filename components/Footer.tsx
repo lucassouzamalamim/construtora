@@ -3,6 +3,11 @@ import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert('Obrigado por se inscrever em nossa newsletter!');
+  };
+
   return (
     <footer className="bg-primary text-white pt-20 pb-10 border-t border-white/10">
       <div className="container mx-auto px-4 md:px-8">
@@ -57,11 +62,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-secondary font-bold uppercase tracking-widest text-sm mb-6">Newsletter</h4>
             <p className="text-xs text-gray-400 mb-4">Receba novidades sobre nossos lançamentos exclusivos.</p>
-            <form className="flex flex-col gap-2">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-2">
               <input 
                 type="email" 
                 placeholder="Seu e-mail" 
                 className="bg-white/5 border border-white/10 px-4 py-2 text-sm text-white focus:outline-none focus:border-secondary transition-colors"
+                required
               />
               <button type="submit" className="bg-secondary text-primary px-4 py-2 text-xs font-bold uppercase hover:bg-white transition-colors">
                 Inscrever-se
